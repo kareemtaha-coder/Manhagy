@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مذكرة شرح: تحليل المقدار الثلاثي المربع الكامل</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="worksheet">
+        <div class="worksheet-header">
+            <div>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <span>أ / كريم طه</span>
+            </div>
+            <div>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.518.759a1.125 1.125 0 00-.437 1.295l.328.654a1.125 1.125 0 001.295.437l1.518-.759a1 1 0 011.06.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z">
+                </path>
+            </svg>
+            <span>للتواصل: ٠١١١٢٣٣٨٩٠١</span>
+        </div>
+    </div>
+    
+    <header class="text-center mb-10">
+        <h1 class="text-4xl font-bold text-sky-800">مقدمة عن الأعداد المركبة</h1>
+        <p class="text-lg text-slate-600 mt-2">الجبر - الصف الأول الثانوي</p>
+    </header>
+    
+                <div class="flex m-4">
+                    <button id="backButton" class="btn-back">
+                        <span>العودة للخلف</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+
+        <main class="space-y-8">
+            <!-- ========================= قسم: لماذا نحتاج إلى الأعداد المركبة؟ ========================= -->
+            <section class="card">
+
+                <h2 class="section-title">١. لماذا نحتاج إلى أعداد جديدة؟</h2>
+                <p>في الرياضيات، واجهتنا مشكلة بسيطة: لا يمكننا إيجاد الجذر التربيعي لعدد سالب. على سبيل المثال،
+                    المعادلة $س^٢ = -١$ ليس لها حل في مجموعة الأعداد الحقيقية التي نعرفها.</p>
+                <p>لحل هذه المشكلة، ابتكر العلماء مجموعة أعداد جديدة وأكبر تسمى <strong>مجموعة الأعداد المركبة
+                        (ك)</strong>، والتي تسمح لنا بالتعامل مع جذور الأعداد السالبة.</p>
+            </section>
+
+            <!-- ========================= قسم: العدد التخيلي "ت" ========================= -->
+            <section class="card">
+
+                <h2 class="section-title">٢. مفتاح الحل: العدد التخيلي (ت)</h2>
+                <p>أساس الأعداد المركبة هو عدد جديد تم "تخيله" لحل المشكلة. هذا العدد هو (ت).</p>
+                <div class="rule-box text-center">
+                    <p class="font-bold text-xl text-slate-800">التعريف الأساسي: $ت^٢ = -١$</p>
+                    <p>هذا يعني أن: $ت = \rsqrt{-١}$</p>
+                </div>
+                <p>باستخدام هذا التعريف، أصبح بإمكاننا الآن إيجاد جذر أي عدد سالب. القاعدة بسيطة: اسحب الإشارة السالبة
+                    خارج الجذر وحولها إلى "ت".</p>
+                <h4 class="question-group-title">أمثلة:</h4>
+                <ul class="list-disc pr-5 space-y-2">
+                    <li>$\rsqrt{-٩} = \rsqrt{٩} \times \rsqrt{-١} = ٣ت$</li>
+                    <li>$\rsqrt{-٧} = \rsqrt{٧} \times \rsqrt{-١} = \rsqrt{٧}ت$</li>
+                </ul>
+            </section>
+
+            <!-- ========================= قسم: قوى "ت" الصحيحة ========================= -->
+            <section class="card">
+
+                <h2 class="section-title">٣. قوى (ت) الصحيحة: نمط متكرر</h2>
+                <p>عندما نرفع العدد "ت" لأسس مختلفة، نكتشف نمطًا بسيطًا يتكرر كل ٤ مرات، وهو ما يجعل تبسيط أي قوة للعدد
+                    "ت" ممكنًا.</p>
+                <ul class="list-disc pr-5 space-y-2 mt-4">
+                    <li>$ت^١ = ت$</li>
+                    <li>$ت^٢ = -١$ (من التعريف)</li>
+                    <li>$ت^٣ = ت^٢ \times ت = -١ \times ت = -ت$</li>
+                    <li>$ت^٤ = ت^٢ \times ت^٢ = (-١) \times (-١) = ١$</li>
+                </ul>
+                <p class="mt-2">بعد $ت^٤ = ١$، يبدأ النمط في التكرار مرة أخرى ($ت^٥ = ت$).</p>
+                <div class="rule-box">
+                    <h3 class="font-bold text-lg mb-2">طريقة سهلة للتبسيط:</h3>
+                    <p>لتبسيط $ت^ن$، اقسم الأس (ن) على ٤ وانظر إلى الباقي. الناتج سيكون دائمًا إحدى القيم الأربعة: $ت,
+                        -١, -ت, ١$.</p>
+                </div>
+            </section>
+
+            <!-- ========================= قسم: العدد المركب ========================= -->
+            <section class="card">
+                <div class="worksheet-header">
+                    <div><span>أ / كريم طه</span></div>
+                    <div><span>للتواصل: ٠١١١٢٣٣٨٩٠١</span></div>
+                </div>
+                <h2 class="section-title">٤. ما هو العدد المركب؟</h2>
+                <p>العدد المركب هو ببساطة عدد يتكون من جزأين: جزء حقيقي وجزء تخيلي. يمكن كتابته دائمًا على الصورة:</p>
+                <div class="rule-box text-center">
+                    <p class="font-bold text-xl text-slate-800">$ع = أ + ب \,ت$</p>
+                    <p>حيث: $أ$ هو الجزء الحقيقي، و $ب$ هو معامل الجزء التخيلي.</p>
+                </div>
+                <h3 class="font-bold text-lg mt-4">ملاحظات هامة:</h3>
+                <ul class="list-disc pr-5 space-y-2">
+                    <li><strong>كل عدد حقيقي هو عدد مركب:</strong> العدد ٧ هو عدد مركب يمكن كتابته على صورة $٧ + ٠ت$.
+                    </li>
+                    <li><strong>العدد التخيلي البحت:</strong> العدد $-٤ت$ هو عدد مركب يمكن كتابته على صورة $٠ - ٤ت$.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- ========================= قسم: العمليات على الأعداد المركبة ========================= -->
+            <section class="card">
+
+                <h2 class="section-title">٥. العمليات على الأعداد المركبة</h2>
+                <p>التعامل مع الأعداد المركبة يشبه إلى حد كبير التعامل مع المقادير الجبرية العادية.</p>
+
+                <h3 class="question-group-title">تساوي عددين مركبين:</h3>
+                <p>يتساوى العددان المركبان إذا تساوى الجزء الحقيقي مع الحقيقي، والجزء التخيلي مع التخيلي.</p>
+                <p><strong>مثال:</strong> إذا كان $س + ص \,ت = ٣ - ٤ت$، فإن $س=٣$ و $ص=-٤$.</p>
+
+                <h3 class="question-group-title">الجمع والطرح:</h3>
+                <p>نجمع (أو نطرح) الأجزاء الحقيقية معًا، والأجزاء التخيلية معًا.</p>
+                <p><strong>مثال:</strong> $(٣+٥ت) + (٤-٢ت) = (٣+٤) + (٥-٢)ت = ٧+٣ت$.</p>
+
+                <h3 class="question-group-title">الضرب:</h3>
+                <p>نستخدم خاصية التوزيع العادية، مع تذكر أن $ت^٢ = -١$.</p>
+                <p><strong>مثال:</strong> $(٢+٣ت)(٤-ت) = ٨ - ٢ت + ١٢ت - ٣ت^٢ = ٨ + ١٠ت - ٣(-١) = ١١ + ١٠ت$.</p>
+
+                <h3 class="question-group-title">العددان المترافقان:</h3>
+                <p>العددان $أ+ب\,ت$ , $أ-ب\,ت$ يسميان عددان مترافقان. عند ضربهما، يكون الناتج دائمًا عددًا حقيقيًا.</p>
+                <p><strong>مثال:</strong> $(٤-٣ت)(٤+٣ت) = (٤)^٢ - (٣ت)^٢ = ١٦ - ٩ت^٢ = ١٦ - ٩(-١) = ١٦+٩=٢٥$.</p>
+
+                <h3 class="question-group-title">قسمة الأعداد المركبة:</h3>
+                <p>للتخلص من العدد التخيلي في المقام، نضرب بسطًا ومقامًا في مرافق المقام.</p>
+                <p><strong>مثال:</strong> $\frac{١٠}{٢+ت} = \frac{١٠}{٢+ت} \times \frac{٢-ت}{٢-ت} = \frac{١٠(٢-ت)}{٤ -
+                    (-١)} = \frac{٢٠-١٠ت}{٥} = ٤ - ٢ت$.</p>
+            </section>
+
+            <section class="card">
+                <h2 class="section-title">تمارين</h2>
+
+                <h3 class="question-group-title">أوجد قيمة كل مما يأتي في أبسط صورة:</h3>
+                <div class="space-y-6">
+                    <div class="p-4 border border-slate-200 rounded-lg">
+                        <p class="text-lg font-semibold">١. $ت^{٢٤}$</p>
+                        <div id="sol-ex1" class="solution-box">
+                            <p>الأس ٢٤ يقبل القسمة على ٤ (الباقي صفر).</p>
+                            <p><strong>الناتج = ١</strong></p>
+                        </div>
+                    </div>
+                    <div class="p-4 border border-slate-200 rounded-lg">
+                        <p class="text-lg font-semibold">٢. $ت^{٣٣}$</p>
+                        <div id="sol-ex2" class="solution-box">
+                            <p>بقسمة ٣٣ على ٤، الباقي ١.</p>
+                            <p><strong>الناتج = $ت$</strong></p>
+                        </div>
+                    </div>
+                    <div class="p-4 border border-slate-200 rounded-lg">
+                        <p class="text-lg font-semibold">٣. $\rsqrt{-١٦}$</p>
+                        <div id="sol-ex3" class="solution-box">
+                            <p>$\rsqrt{-١٦} = \rsqrt{١٦} \times \rsqrt{-١}$</p>
+                            <p><strong>الناتج = $٤ت$</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="question-group-title">اختر الإجابة الصحيحة:</h3>
+                <div class="space-y-6">
+                    <div class="p-4 border border-slate-200 rounded-lg mcq-question" id="mcq-1">
+                        <p class="text-lg font-semibold">١. أبسط صورة للعدد التخيلي $ت^{٤٥}$ هي:</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-1')"
+                                data-correct="true">$ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-1')">$-١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-1')">$-ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-1')">$١$</button>
+                        </div>
+                        <div id="feedback-mcq-1" class="mcq-feedback mt-3"></div>
+                    </div>
+                    <div class="p-4 border border-slate-200 rounded-lg mcq-question" id="mcq-2">
+                        <p class="text-lg font-semibold">٢. مجموعة حل المعادلة $س^٢ + ٢٥ = ٠$ في مجموعة الأعداد المركبة
+                            هي:</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-2')">$\{٥\}$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-2')">$\emptyset$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-2')" data-correct="true">$\{٥ت,
+                                -٥ت\}$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-2')">$\{٥, -٥\}$</button>
+                        </div>
+                        <div id="feedback-mcq-2" class="mcq-feedback mt-3"></div>
+                    </div>
+                </div>
+            </section>
+
+
+    </div>
+    </main>
+
+    <div class="worksheet-footer">
+        <span>تمنياتنا لكم بالنجاح والتوفيق</span>
+        <span>أ / كريم طه - ٠١١١٢٣٣٨٩٠١</span>
+    </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مذكرة شرح: تحليل المقدار الثلاثي المربع الكامل</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="worksheet">
+        <div class="worksheet-header">
+            
+            <div>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <span>أ / كريم طه</span>
+            </div>
+            <div>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.518.759a1.125 1.125 0 00-.437 1.295l.328.654a1.125 1.125 0 001.295.437l1.518-.759a1 1 0 011.06.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z">
+                </path>
+            </svg>
+            <span>للتواصل: ٠١١١٢٣٣٨٩٠١</span>
+        </div>
+    </div>
+    
+    <header class="text-center mb-10">
+        <h1 class="text-4xl font-bold text-sky-800">مقدمة عن الأعداد المركبة</h1>
+        <p class="text-lg text-slate-600 mt-2">الجبر - الصف الأول الثانوي</p>
+    </header>
+    <div class="flex m-4">
+        <button id="backButton" class="btn-back">
+            <span>العودة للخلف</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+            </svg>
+        </button>
+    </div>
+
+        <main class="space-y-8">
+ 
+
+            <section class="card">
+                <h2 class="section-title">تمارين</h2>
+
+                <h3 class="question-group-title">أوجد قيمة كل مما يأتي في أبسط صورة:</h3>
+                <div class="space-y-6">
+                    <div class="p-4 border border-slate-200 rounded-lg">
+                        <p class="text-lg font-semibold">١. $ت^{٢٤}$</p>
+                        <div id="sol-ex1" class="solution-box">
+                            <p>الأس ٢٤ يقبل القسمة على ٤ (الباقي صفر).</p>
+                            <p><strong>الناتج = ١</strong></p>
+                        </div>
+                    </div>
+                    <div class="p-4 border border-slate-200 rounded-lg">
+                        <p class="text-lg font-semibold">٢. $ت^{٣٣}$</p>
+                        <div id="sol-ex2" class="solution-box">
+                            <p>بقسمة ٣٣ على ٤، الباقي ١.</p>
+                            <p><strong>الناتج = $ت$</strong></p>
+                        </div>
+                    </div>
+                    <div class="p-4 border border-slate-200 rounded-lg">
+                        <p class="text-lg font-semibold">٣. $\rsqrt{-١٦}$</p>
+                        <div id="sol-ex3" class="solution-box">
+                            <p>$\rsqrt{-١٦} = \rsqrt{١٦} \times \rsqrt{-١}$</p>
+                            <p><strong>الناتج = $٤ت$</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="question-group-title">اختر الإجابة الصحيحة:</h3>
+                <div class="space-y-6">
+                    <div class="p-4 border border-slate-200 rounded-lg mcq-question" id="mcq-1">
+                        <p class="text-lg font-semibold">١. أبسط صورة للعدد التخيلي $ت^{٤٥}$ هي:</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-1')"
+                                data-correct="true">$ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-1')">$-١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-1')">$-ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-1')">$١$</button>
+                        </div>
+                        <div id="feedback-mcq-1" class="mcq-feedback mt-3"></div>
+                    </div>
+                    <div class="p-4 border border-slate-200 rounded-lg mcq-question" id="mcq-2">
+                        <p class="text-lg font-semibold">٢. مجموعة حل المعادلة $س^٢ + ٢٥ = ٠$ في مجموعة الأعداد المركبة
+                            هي:</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-2')">$\{٥\}$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-2')">$\emptyset$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-2')" data-correct="true">$\{٥ت,
+                                -٥ت\}$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-2')">$\{٥, -٥\}$</button>
+                        </div>
+                        <div id="feedback-mcq-2" class="mcq-feedback mt-3"></div>
+                    </div>
+                </div>
+            </section>
+            <div class="card">
+                <h2 class="section-title">تمارين إضافية على الدرس</h2>
+
+                <h3 class="question-group-title">المستوى الأول: مفاهيم أساسية</h3>
+                <div class="space-y-8">
+                    <div class="mcq-question" id="mcq-ex-1">
+                        <p class="text-lg font-semibold">١. أي مما يأتي يكون عددًا تخيليا ؟</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-1')">$\pi$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-1')"
+                                data-correct="true">$\rsqrt{-٥}$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-1')">$ت^٢$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-1')">$\rsqrt{٥}$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-1" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-2">
+                        <p class="text-lg font-semibold">٢. $ت^{٢٤} =$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-2')"
+                                data-correct="true">$١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-2')">$-١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-2')">$ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-2')">$-ت$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-2" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-3">
+                        <p class="text-lg font-semibold">٣. أبسط صورة للعدد التخيلي $ت^{٤٥}$ هي:</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-3')"
+                                data-correct="true">$ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-3')">$-١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-3')">$-ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-3')">$١$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-3" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-4">
+                        <p class="text-lg font-semibold">٤. المعكوس الجمعي للعدد المركب $(٤ - ٧ت)$ هو:</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-4')">$٤+٧ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-4')"
+                                data-correct="true">$-٤+٧ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-4')">$-٤-٧ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-4')">$٤-٧ت$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-4" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-5">
+                        <p class="text-lg font-semibold">٥. مرافق العدد $(٣ت - ٤)$ هو:</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-5')">$٣ت + ٤$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-5')" data-correct="true">$-٣ت
+                                - ٤$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-5')">$-٣ت + ٤$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-5')">$٣ت - ٤$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-5" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-6">
+                        <p class="text-lg font-semibold">٦. مرافق العدد $(ت - ت^٢)$ هو:</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-6')">$ت+١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-6')">$-ت-١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-6')"
+                                data-correct="true">$-ت+١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-6')">$ت-١$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-6" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-7">
+                        <p class="text-lg font-semibold">٧. مرافق العدد $-٨$ هو:</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-7')">$٨ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-7')"
+                                data-correct="true">$-٨$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-7')">$٨$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-7')">$-٨ت$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-7" class="mcq-feedback mt-3"></div>
+                    </div>
+                </div>
+
+                <h3 class="question-group-title">المستوى الثاني: عمليات حسابية</h3>
+                <div class="space-y-8">
+                    <div class="mcq-question" id="mcq-ex-8">
+                        <p class="text-lg font-semibold">٨. $ت^{-٣٠} =$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-8')">$١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-8')"
+                                data-correct="true">$-١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-8')">$ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-8')">$-ت$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-8" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-9">
+                        <p class="text-lg font-semibold">٩. $\frac{١}{ت^{١٥}} =$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-9')">$١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-9')">$-١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-9')"
+                                data-correct="true">$ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-9')">$-ت$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-9" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-10">
+                        <p class="text-lg font-semibold">١٠. $ت^{٢٦} + ت^{٢٨} =$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-10')">$ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-10')">$-ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-10')"
+                                data-correct="true">$٠$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-10')">$١$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-10" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-11">
+                        <p class="text-lg font-semibold">١١. $١+ت+ت^٢+ت^٣+ت^٤ =$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-11')">$١+ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-11')">$-١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-11')"
+                                data-correct="true">$١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-11')">$ت$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-11" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-12-2">
+                        <p class="text-lg font-semibold">١٢. $(٣ت)(-٢ت)=$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-12-2')"
+                                data-correct="true">$٦$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-12-2')">$-٦$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-12-2')">$٦ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-12-2')">$-٦ت$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-12-2" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-13-2">
+                        <p class="text-lg font-semibold">١٣. $(٤-٣ت)(٤+٣ت) =$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-13-2')">$٧$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-13-2')">$١٤$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-13-2')">$١٤ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-13-2')"
+                                data-correct="true">$٢٥$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-13-2" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-14">
+                        <p class="text-lg font-semibold">١٤. $\rsqrt{-٢} \times \rsqrt{-٨} =$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-14')">$٤$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-14')"
+                                data-correct="true">$-٤$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-14')">$٤ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-14')">$-٤ت$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-14" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-15">
+                        <p class="text-lg font-semibold">١٥. $(٣+٢ت)+(٢-٥ت)=$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-15')">$٥-٤ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-15')"
+                                data-correct="true">$٥-٣ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-15')">$٣-٥ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-15')">$٥$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-15" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-16">
+                        <p class="text-lg font-semibold">١٦. $(٣ت)(٤ت)(-٦ت)=$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-16')">$-٧٢ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-16')">$-٢٤$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-16')"
+                                data-correct="true">$٧٢ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-16')">$٧٢$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-16" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-17">
+                        <p class="text-lg font-semibold">١٧. $(١٢-٥ت^{١٧})-(٧-\rsqrt{-٨١})=$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-17')"
+                                data-correct="true">$٥+٤ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-17')">$٥-١٤ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-17')">$٥-٤ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-17')">$٥+٣ت$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-17" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-18">
+                        <p class="text-lg font-semibold">١٨. $(١-ت)^٤ - (١+ت)^٤ =$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-18')"
+                                data-correct="true">$٠$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-18')">$-٨$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-18')">$٨ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-18')">$-٨ت$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-18" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-19">
+                        <p class="text-lg font-semibold">١٩. كل ما يلي أعداد تخيلية ما عدا:</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-19')">$\rsqrt{-١٨}$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-19')">$ت^{١٩}$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-19')"
+                                data-correct="true">$(١+ت)^٤$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-19')">$(٢-٢ت)^٢$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-19" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-20">
+                        <p class="text-lg font-semibold">٢٠. كل الأعداد الآتية غير حقيقية ما عدا:</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-20')">$\rsqrt{-٨}$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-20')"
+                                data-correct="true">$(١+ت)^٤$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-20')">$(١+ت)^٣$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-20')">$(٢+٢ت)^٢$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-20" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-21">
+                        <p class="text-lg font-semibold">٢١. $(١-ت)(١-ت^٢)(١-ت^٣)=$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-21')">$٢(١-ت)$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-21')">$-٤$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-21')"
+                                data-correct="true">$٤$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-21')">$٢(١+ت)$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-21" class="mcq-feedback mt-3"></div>
+                    </div>
+                </div>
+
+                <h3 class="question-group-title">المستوى الثالث: مسائل متقدمة ومعادلات</h3>
+                <div class="space-y-8">
+                    <div class="mcq-question" id="mcq-ex-28">
+                        <p class="text-lg font-semibold">٢٨. إذا كان $س+ت ص = ت^{٤٣} + ٣\rsqrt{-٤}$، فإن $س+ص =$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-28')">$٧$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-28')"
+                                data-correct="true">$٥$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-28')">$٣$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-28')">$-٥$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-28" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-30">
+                        <p class="text-lg font-semibold">٣٠. إذا كان $١٢+٣أت = ٤ن-٢٧ت$ فإن أ+ن =</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-30')">$-٩$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-30')">$١٢$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-30')">$-١٢$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-30')"
+                                data-correct="true">$-٦$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-30" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-32">
+                        <p class="text-lg font-semibold">٣٢. مجموعة حل المعادلة $٩س^٢ + ٤ = ٠$ في (ك) هي:</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option"
+                                onclick="checkAnswer(this, 'mcq-ex-32')">$\{\frac{٢}{٣}\}$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-32')">$\{\frac{٢}{٣},
+                                \frac{-٢}{٣}\}$</button>
+                            <button class="mcq-option"
+                                onclick="checkAnswer(this, 'mcq-ex-32')">$\{\frac{٢}{٣}ت\}$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-32')"
+                                data-correct="true">$\{\frac{٢}{٣}ت, -\frac{٢}{٣}ت\}$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-32" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-34">
+                        <p class="text-lg font-semibold">٣٤. إذا كان $س^٢ - ٢س + ٢ = ٠$ فإن س =</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-34')">$٢ \pm ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-34')">$-١ \pm ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-34')">$-٢ \pm ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-34')" data-correct="true">$١
+                                \pm ت$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-34" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                </div>
+
+                <h3 class="question-group-title">المستوى الرابع: مهارات تفكير عليا</h3>
+                <div class="space-y-8">
+                    <div class="mcq-question" id="mcq-ex-35">
+                        <p class="text-lg font-semibold">٣٥. المعكوس الضربي للعدد $\frac{ت}{٢ت+١}$ هو:</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-35')">$١+٢ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-35')"
+                                data-correct="true">$٢-ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-35')">$-١-٢ت$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-35')">$-١+٢ت$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-35" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-39">
+                        <p class="text-lg font-semibold">٣٩. $ت+ت^٢+ت^٣+...+ت^{١٠٠} =$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-39')">$١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-39')">$-١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-39')"
+                                data-correct="true">$٠$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-39')">$ت$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-39" class="mcq-feedback mt-3"></div>
+                    </div>
+
+                    <div class="mcq-question" id="mcq-ex-41">
+                        <p class="text-lg font-semibold">٤١. إذا كانت أ، ب، ج، د أربعة أعداد صحيحة متتالية فإن:
+                            $ت^أ+ت^ب+ت^ج+ت^د =$</p>
+                        <div class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-41')">$١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-41')">$-١$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-41')"
+                                data-correct="true">$٠$</button>
+                            <button class="mcq-option" onclick="checkAnswer(this, 'mcq-ex-41')">$ت$</button>
+                        </div>
+                        <div id="feedback-mcq-ex-41" class="mcq-feedback mt-3"></div>
+                    </div>
+                </div>
+                <h3 class="question-group-title">أوجد ناتج كل مما يأتي في أبسط صورة:</h3>
+                <div class="space-y-8">
+
+                    <div class="p-4 border border-slate-200 rounded-lg">
+                        <p class="text-lg font-semibold">(١) $(٢+\rsqrt{-٩})(٣-\rsqrt{-٤})$</p>
+                        <button class="btn mt-3" onclick="toggleAnswer('sol-essay-1')">إظهار الحل</button>
+                        <div id="sol-essay-1" class="hidden solution-box mt-2">
+                            <p><strong>خطوات الحل:</strong></p>
+                            <p>أولاً، نبسط الجذور السالبة: $(٢+٣ت)(٣-٢ت)$.</p>
+                            <p>$= ٢(٣) + ٢(-٢ت) + ٣ت(٣) + ٣ت(-٢ت)$</p>
+                            <p>$= ٦ - ٤ت + ٩ت - ٦ت^٢$</p>
+                            <p>$= ٦ + ٥ت - ٦(-١)$</p>
+                            <p>$= ٦ + ٥ت + ٦$</p>
+                            <p><strong>الناتج النهائي = $١٢ + ٥ت$</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 border border-slate-200 rounded-lg">
+                        <p class="text-lg font-semibold">(٢) $(٢-٥ت)^٢$</p>
+                        <button class="btn mt-3" onclick="toggleAnswer('sol-essay-2')">إظهار الحل</button>
+                        <div id="sol-essay-2" class="hidden solution-box mt-2">
+                            <p><strong>خطوات الحل:</strong></p>
+                            <p>نفك القوس التربيعي: $(٢)^٢ - ٢(٢)(٥ت) + (٥ت)^٢$</p>
+                            <p>$= ٤ - ٢٠ت + ٢٥ت^٢$</p>
+                            <p>$= ٤ - ٢٠ت + ٢٥(-١)$</p>
+                            <p>$= ٤ - ٢٠ت - ٢٥$</p>
+                            <p><strong>الناتج النهائي = $-٢١ - ٢٠ت$</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 border border-slate-200 rounded-lg">
+                        <p class="text-lg font-semibold">(٣) $(٣-٢ت)^٢ + (٣+٢ت)$</p>
+                        <button class="btn mt-3" onclick="toggleAnswer('sol-essay-3')">إظهار الحل</button>
+                        <div id="sol-essay-3" class="hidden solution-box mt-2">
+                            <p><strong>خطوات الحل:</strong></p>
+                            <p>نفك القوس الأول: $(٣)^٢ - ٢(٣)(٢ت) + (٢ت)^٢ = ٩ - ١٢ت + ٤ت^٢ = ٩ - ١٢ت - ٤ = ٥ - ١٢ت$.
+                            </p>
+                            <p>نجمع الناتج مع القوس الثاني: $(٥ - ١٢ت) + (٣+٢ت)$</p>
+                            <p>$= (٥+٣) + (-١٢+٢)ت$</p>
+                            <p><strong>الناتج النهائي = $٨ - ١٠ت$</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 border border-slate-200 rounded-lg">
+                        <p class="text-lg font-semibold">(٤) $(١+ت)^٤$</p>
+                        <button class="btn mt-3" onclick="toggleAnswer('sol-essay-4')">إظهار الحل</button>
+                        <div id="sol-essay-4" class="hidden solution-box mt-2">
+                            <p><strong>خطوات الحل:</strong></p>
+                            <p>نكتب المقدار على صورة $((١+ت)^٢)^٢$.</p>
+                            <p>نحسب القوس الداخلي: $(١+ت)^٢ = ١^٢ + ٢(١)(ت) + ت^٢ = ١ + ٢ت - ١ = ٢ت$.</p>
+                            <p>الآن نرفع الناتج للقوة ٢: $(٢ت)^٢ = ٢^٢ \times ت^٢ = ٤ \times (-١) = -٤$.</p>
+                            <p><strong>الناتج النهائي = $-٤$</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 border border-slate-200 rounded-lg">
+                        <p class="text-lg font-semibold">(٥) $(١+\rsqrt{-١})^٤ - (١-\rsqrt{-١})^٤$</p>
+                        <button class="btn mt-3" onclick="toggleAnswer('sol-essay-5')">إظهار الحل</button>
+                        <div id="sol-essay-5" class="hidden solution-box mt-2">
+                            <p><strong>خطوات الحل:</strong></p>
+                            <p>أولاً، نلاحظ أن $\rsqrt{-١} = ت$. إذن المقدار هو $(١+ت)^٤ - (١-ت)^٤$.</p>
+                            <p>من السؤال السابق، وجدنا أن $(١+ت)^٤ = -٤$.</p>
+                            <p>بنفس الطريقة، نحسب $(١-ت)^٤ = ((١-ت)^٢)^٢ = (١-٢ت+ت^٢)^٢ = (١-٢ت-١)^٢ = (-٢ت)^٢ = ٤ت^٢ =
+                                -٤$.</p>
+                            <p>الآن نطرح الناتجين: $(-٤) - (-٤) = -٤ + ٤ = ٠$.</p>
+                            <p><strong>الناتج النهائي = $٠$</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 border border-slate-200 rounded-lg">
+                        <p class="text-lg font-semibold">(٦) $(١-ت)^{١٠}$</p>
+                        <button class="btn mt-3" onclick="toggleAnswer('sol-essay-6')">إظهار الحل</button>
+                        <div id="sol-essay-6" class="hidden solution-box mt-2">
+                            <p><strong>خطوات الحل:</strong></p>
+                            <p>نكتب المقدار على صورة $((١-ت)^٢)^٥$.</p>
+                            <p>نحسب القوس الداخلي: $(١-ت)^٢ = ١-٢ت+ت^٢ = ١-٢ت-١ = -٢ت$.</p>
+                            <p>الآن نرفع الناتج للقوة ٥: $(-٢ت)^٥ = (-٢)^٥ \times (ت)^٥ = -٣٢ \times ت^٥$.</p>
+                            <p>نبسط $ت^٥ = ت^٤ \cdot ت = ١ \cdot ت = ت$.</p>
+                            <p><strong>الناتج النهائي = $-٣٢ت$</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 border border-slate-200 rounded-lg">
+                        <p class="text-lg font-semibold">(٧) $(١+٢ت)(٢+٣ت)(٤+٥ت)$</p>
+                        <button class="btn mt-3" onclick="toggleAnswer('sol-essay-7')">إظهار الحل</button>
+                        <div id="sol-essay-7" class="hidden solution-box mt-2">
+                            <p><strong>خطوات الحل:</strong></p>
+                            <p>نبدأ بضرب أول قوسين: $(١+٢ت)(٢+٣ت)$</p>
+                            <p>$= ٢+٣ت+٤ت+٦ت^٢$</p>
+                            <p>$= ٢+٧ت-٦ = -٤+٧ت$.</p>
+                            <p>نضرب الناتج في القوس الثالث: $(-٤+٧ت)(٤+٥ت)$.</p>
+                            <p>$= -١٦ -٢٠ت + ٢٨ت + ٣٥ت^٢$</p>
+                            <p>$= -١٦ + ٨ت - ٣٥$</p>
+                            <p><strong>الناتج النهائي = $-٥١ + ٨ت$</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 border border-slate-200 rounded-lg">
+                <p class="text-lg font-semibold">٢. ضع كلاً مما يأتي على صورة أ + ب ت:</p>
+                <div class="space-y-6 mt-4">
+                    <div class="p-4 bg-slate-50 rounded-md">
+                        <p class="font-semibold text-slate-800">(أ) $\frac{٢٦}{٣-٢ت}$</p>
+                        <button class="btn mt-3" onclick="toggleAnswer('sol-essay-2a')">إظهار الحل</button>
+                        <div id="sol-essay-2a" class="hidden solution-box mt-2">
+                            <p><strong>خطوات الحل:</strong></p>
+                            <p>نضرب البسط والمقام في مرافق المقام وهو $(٣+٢ت)$.</p>
+                            <p>$= \frac{٢٦(٣+٢ت)}{(٣-٢ت)(٣+٢ت)}$</p>
+                            <p>$= \frac{٢٦(٣+٢ت)}{(٣)^٢+(٢)^٢}$</p>
+                            <p>$= \frac{٢٦(٣+٢ت)}{٩+٤} = \frac{٢٦(٣+٢ت)}{١٣}$.</p>
+                            <p>نختصر ٢٦ مع ١٣: $= ٢(٣+٢ت)$.</p>
+                            <p><strong>الناتج النهائي = $٦ + ٤ت$</strong></p>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-md">
+                        <p class="font-semibold text-slate-800">(ب) $\frac{٣+٤ت}{٥-٢ت}$</p>
+                        <button class="btn mt-3" onclick="toggleAnswer('sol-essay-2b')">إظهار الحل</button>
+                        <div id="sol-essay-2b" class="hidden solution-box mt-2">
+                            <p><strong>خطوات الحل:</strong></p>
+                            <p>نضرب بسطًا ومقامًا في مرافق المقام وهو $(٥+٢ت)$.</p>
+                            <p>البسط: $(٣+٤ت)(٥+٢ت) = ١٥ + ٦ت + ٢٠ت + ٨ت^٢ = ١٥ + ٢٦ت - ٨ = ٧ + ٢٦ت$.</p>
+                            <p>المقام: $(٥-٢ت)(٥+٢ت) = (٥)^٢+(٢)^٢ = ٢٥+٤ = ٢٩$.</p>
+                            <p>الكسر يصبح: $\frac{٧+٢٦ت}{٢٩}$.</p>
+                            <p><strong>الناتج النهائي = $\frac{٧}{٢٩} + \frac{٢٦}{٢٩}ت$</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 border border-slate-200 rounded-lg">
+                <p class="text-lg font-semibold">٣. حل كلاً من المعادلات الآتية في مجموعة الأعداد المركبة:</p>
+                <div class="space-y-6 mt-4">
+                    <div class="p-4 bg-slate-50 rounded-md">
+                        <p class="font-semibold text-slate-800">(أ) $٣س^٢ + ١٢ = ٠$</p>
+                        <button class="btn mt-3" onclick="toggleAnswer('sol-essay-3a')">إظهار الحل</button>
+                        <div id="sol-essay-3a" class="hidden solution-box mt-2">
+                            <p><strong>خطوات الحل:</strong></p>
+                            <p>$٣س^٢ = -١٢$</p>
+                            <p>$س^٢ = -٤$</p>
+                            <p>$س = \pm \rsqrt{-٤}$</p>
+                            <p>$س = \pm \rsqrt{٤} \times \rsqrt{-١}$</p>
+                            <p><strong>مجموعة الحل هي $\{٢ت, -٢ت\}$.</strong></p>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-md">
+                        <p class="font-semibold text-slate-800">(ب) $٤س^٢ + ١٢٥ = ٢٥$</p>
+                        <button class="btn mt-3" onclick="toggleAnswer('sol-essay-3b')">إظهار الحل</button>
+                        <div id="sol-essay-3b" class="hidden solution-box mt-2">
+                            <p><strong>خطوات الحل:</strong></p>
+                            <p>$٤س^٢ = ٢٥ - ١٢٥$</p>
+                            <p>$٤س^٢ = -١٠٠$</p>
+                            <p>$س^٢ = -٢٥$</p>
+                            <p>$س = \pm \rsqrt{-٢٥}$</p>
+                            <p><strong>مجموعة الحل هي $\{٥ت, -٥ت\}$.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 border border-slate-200 rounded-lg">
+                <p class="text-lg font-semibold">٤. أوجد قيمتي س، ص الحقيقيتين اللتين تحققان المعادلات الآتية:</p>
+                <div class="space-y-6 mt-4">
+                    <div class="p-4 bg-slate-50 rounded-md">
+                        <p class="font-semibold text-slate-800">(أ) $٢س - ٣ + (٣ص+١)ت = ٧ + ١٠ت$</p>
+                        <button class="btn mt-3" onclick="toggleAnswer('sol-essay-4a')">إظهار الحل</button>
+                        <div id="sol-essay-4a" class="hidden solution-box mt-2">
+                            <p><strong>الحل:</strong></p>
+                            <p>بمساواة الجزء الحقيقي بالحقيقي: $٢س - ٣ = ٧ ⟸ ٢س = ١٠ ⟸ س = ٥$.</p>
+                            <p>بمساواة الجزء التخيلي بالتخيلي: $٣ص + ١ = ١٠ ⟸ ٣ص = ٩ ⟸ ص = ٣$.</p>
+                            <p><strong>إذن: $س=٥$ و $ص=٣$.</strong></p>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-md">
+                        <p class="font-semibold text-slate-800">(ب) $(٢س - ص) + (س - ٢ص)ت = ٥ + ت$</p>
+                        <button class="btn mt-3" onclick="toggleAnswer('sol-essay-4b')">إظهار الحل</button>
+                        <div id="sol-essay-4b" class="hidden solution-box mt-2">
+                            <p><strong>الحل:</strong></p>
+                            <p>نكون معادلتين:</p>
+                            <p>(١) الجزء الحقيقي: $٢س - ص = ٥$.</p>
+                            <p>(٢) الجزء التخيلي: $س - ٢ص = ١$.</p>
+                            <p>بضرب المعادلة (١) في -٢: $-٤س + ٢ص = -١٠$.</p>
+                            <p>بجمع المعادلة الجديدة مع المعادلة (٢): $-٣س = -٩ ⟸ س = ٣$.</p>
+                            <p>بالتعويض بقيمة س في المعادلة (١): $٢(٣) - ص = ٥ ⟸ ٦ - ص = ٥ ⟸ ص = ١$.</p>
+                            <p><strong>إذن: $س=٣$ و $ص=١$.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    </section>
+
+
+
+
+    </div>
+    </main>
+
+    <div class="worksheet-footer">
+        <span>تمنياتنا لكم بالنجاح والتوفيق</span>
+        <span>أ / كريم طه - ٠١١١٢٣٣٨٩٠١</span>
+    </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>

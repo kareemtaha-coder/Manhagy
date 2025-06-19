@@ -1,0 +1,609 @@
+/* --- GOOGLE FONTS & ROOT VARIABLES --- */
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Amiri:wght@700&display=swap");
+
+:root {
+  --bg-color: #f5f7fa;
+  --worksheet-bg: #ffffff;
+  --primary-text: #2c3e50;
+  --secondary-text: #7f8c8d;
+  --border-color: #ecf0f1;
+  --accent-blue: #3498db;
+  --accent-yellow: #f1c40f;
+  --accent-green: #2ecc71;
+  --accent-red: #e74c3c;
+  --light-blue-bg: #ecf5ff;
+  --light-yellow-bg: #fef9e7;
+  --light-green-bg: #eafaf1;
+  --light-red-bg: #fdedec;
+}
+
+/* --- BODY & GENERAL SETUP --- */
+body {
+  font-family: "Cairo", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--primary-text);
+  line-height: 2;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* --- WORKSHEET CONTAINER --- */
+.worksheet {
+  background: var(--worksheet-bg);
+  max-width: 1100px;
+  margin: 2rem auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 60px rgba(44, 62, 80, 0.1);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+/* --- HEADER & FOOTER --- */
+.worksheet-header,
+.worksheet-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--secondary-text);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.worksheet-footer {
+  border-top: 1px solid var(--border-color);
+  border-bottom: none;
+  margin-top: 3rem;
+  background-color: var(--bg-color);
+}
+.icon {
+  width: 1.2em;
+  height: 1.2em;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/* --- MAIN CONTENT & TYPOGRAPHY --- */
+main {
+  padding: 1.5rem 2.5rem;
+}
+
+header.text-center h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #1e3a8a;
+}
+header.text-center p {
+  font-size: 1.1rem;
+  color: var(--secondary-text);
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--accent-blue);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 4px solid var(--light-blue-bg);
+  display: inline-block;
+}
+
+.question-group-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-text);
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--light-blue-bg);
+  border-right: 5px solid var(--accent-blue);
+  border-radius: 8px;
+}
+
+/* --- CONTENT BOXES --- */
+.rule-box {
+  background-color: var(--light-yellow-bg);
+  border-right: 5px solid var(--accent-yellow);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.solution-box {
+  background-color: #f1f3f5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  border: 1px solid #e0e5e9;
+  line-height: 2.2;
+}
+
+/* --- MATH & ICONS --- */
+.katex {
+  font-size: 1.2rem !important;
+  font-family: "Amiri", serif;
+}
+
+/* --- INTERACTIVE ELEMENTS (BUTTONS & QUIZ) --- */
+.btn {
+  display: inline-block;
+  background: var(--accent-blue);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+}
+.btn:hover {
+  background: #2980b9;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+}
+.btn:active {
+  transform: translateY(-1px);
+}
+
+.mcq-question {
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background-color: #fff;
+  margin-top: 1.5rem;
+}
+
+.mcq-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.mcq-option {
+  border: 2px solid var(--border-color);
+  background-color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.mcq-option:hover:not(:disabled) {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  background: var(--light-blue-bg);
+}
+.mcq-option.correct {
+  background-color: var(--light-green-bg) !important;
+  border-color: var(--accent-green) !important;
+  color: #27ae60 !important;
+}
+.mcq-option.incorrect {
+  background-color: var(--light-red-bg) !important;
+  border-color: var(--accent-red) !important;
+  color: #c0392b !important;
+}
+.mcq-option:disabled {
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+.mcq-feedback {
+  font-weight: bold;
+  padding: 0.75rem;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: 1rem;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+.mcq-feedback.visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+.feedback-correct {
+  color: #27ae60;
+  background-color: var(--light-green-bg);
+}
+.feedback-incorrect {
+  color: #c0392b;
+  background-color: var(--light-red-bg);
+}
+/*
+ ========================================================================
+ -- تصميم الأجهزة المحمولة (مستوحى من تطبيقات الموبايل) --
+ ========================================================================
+*/
+@media (max-width: 768px) {
+  :root {
+    /* يمكننا تعريف متغيرات خاصة بالموبايل هنا إذا احتجنا */
+    --mobile-padding: 1rem; /* 16px */
+  }
+
+  /* 1. إعدادات أساسية لإعطاء شعور التطبيق */
+  body {
+    background-color: var(
+      --bg-color
+    ) !important; /* خلفية رمادية فاتحة للتطبيق كله */
+    -webkit-font-smoothing: antialiased; /* لجعل الخطوط أنعم */
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .worksheet {
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background-color: transparent; /* الحاوية الرئيسية شفافة لتندمج مع الخلفية */
+    padding-bottom: 2rem;
+  }
+
+  /* 2. تصميم الشريط العلوي (Header) */
+  .worksheet-header {
+    background-color: var(--worksheet-bg);
+    padding: 1rem var(--mobile-padding);
+    border-bottom: 1px solid var(--border-color);
+    flex-direction: row; /* إعادة التوجيه ليكون أفقيًا */
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--secondary-text);
+  }
+
+  /* 3. تنسيق المحتوى الرئيسي والخطوط */
+  main {
+    padding: 0 var(--mobile-padding);
+  }
+
+  header.text-center {
+    padding: 1.5rem 0;
+    margin-bottom: 0;
+  }
+
+  header.text-center h1 {
+    font-size: 1.8rem; /* خط العنوان الرئيسي (مثال: 28px) */
+    line-height: 1.3;
+  }
+
+  header.text-center p {
+    font-size: 1rem; /* خط العنوان الفرعي (مثال: 16px) */
+    color: var(--secondary-text);
+  }
+
+  /* تعديل حجم الخط العام للفقرات */
+  p,
+  li {
+    font-size: 1.05rem; /* حجم مريح للقراءة */
+    line-height: 1.9;
+    color: #374151; /* لون أغمق قليلاً من الافتراضي */
+  }
+
+  /* 4. نظام البطاقات (Cards UI) */
+  section.card,
+  .rule-box,
+  .mcq-question,
+  .p-4.border.rounded-lg {
+    background-color: var(--worksheet-bg);
+    border: none; /* إزالة الحدود القديمة */
+    border-radius: 16px; /* زوايا دائرية عصرية */
+    padding: 1.25rem; /* 20px */
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.06); /* ظل ناعم */
+    margin-top: 1.25rem; /* مسافة بين البطاقات */
+  }
+
+  .section-title {
+    font-size: 1.5rem; /* 24px */
+    border-bottom-width: 3px;
+    padding-bottom: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .question-group-title {
+    font-size: 1.25rem; /* 20px */
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+  }
+
+  .rule-box {
+    border-radius: 12px;
+  }
+
+  /* 5. تصميم أزرار الاختيارات (MCQ) */
+  .mcq-options {
+    grid-template-columns: 1fr;
+    gap: 0.75rem; /* 12px */
+  }
+
+  .mcq-option {
+    padding: 1rem;
+    background-color: #f9fafb; /* لون مختلف قليلاً عن خلفية البطاقة */
+    border: 1px solid var(--border-color);
+    font-weight: 600;
+    font-size: 1rem;
+    width: 100%;
+    border-radius: 12px;
+    text-align: right;
+    padding-right: 1.5rem;
+  }
+
+  .mcq-option:hover:not(:disabled) {
+    background-color: var(--light-blue-bg);
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+  }
+
+  .mcq-option.correct {
+    border-width: 2px;
+  }
+  .mcq-option.incorrect {
+    border-width: 2px;
+  }
+
+  /* 6. تنسيق الأزرار العامة وزر العودة */
+  .btn-back {
+    margin: 1rem 0 0 0; /* مسافة فوق زر العودة */
+  }
+
+  .btn {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1rem;
+  }
+
+  .solution-box {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1rem;
+  }
+
+  /* 7. إخفاء التذييل في الموبايل لتقليل التشتيت */
+  .worksheet-footer {
+    display: none;
+  }
+}
+
+/*
+ ========================================================================
+ -- تصميم طباعة احترافي ومحسن (Professional & Enhanced Print Design) --
+ --                   تعديل بواسطة مساعد Gemini الذكي                  --
+ ========================================================================
+*/
+@media print {
+  /* --- 1. إعدادات الصفحة الأساسية ونظام الألوان --- */
+  @page {
+    size: A4 portrait;
+    margin: 1.5cm 1.2cm; /* تقليل الهوامش الجانبية قليلاً لزيادة المساحة */
+  }
+
+  /* تعريف متغيرات ألوان احترافية ومناسبة للحبر */
+  :root {
+    --print-primary-text: #1a202c; /* أسود داكن غير كامل للراحة */
+    --print-primary-blue: #003d6b; /* أزرق داكن للعناوين الرئيسية */
+    --print-secondary-blue: #005a9c; /* أزرق ثانوي لعناوين الأقسام */
+    --print-accent-blue: #0077b6; /* أزرق أفتح للعناوين الفرعية */
+    --print-border-light: #d1d5db; /* لون خفيف للحدود */
+    --print-bg-light-blue: #eff6ff; /* خلفية سماوية فاتحة جداً */
+    --print-bg-light-yellow: #fffbeb; /* خلفية صفراء فاتحة جداً للقواعد */
+    --print-bg-light-green: #f0fdf4; /* خلفية خضراء فاتحة جداً للحلول */
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* --- 2. تنسيق الخطوط والمحتوى العام --- */
+  body {
+    font-family: "Cairo", "Times New Roman", serif;
+    background-color: #ffffff !important;
+    color: var(--print-primary-text) !important;
+    font-size: 11.5pt; /* حجم خط مثالي للفقرات، يوفر مساحة ويحافظ على الوضوح */
+    line-height: 1.6; /* تباعد أسطر مريح للقراءة */
+  }
+
+  p {
+    orphans: 3; /* لمنع ترك سطر واحد من الفقرة في أعلى الصفحة */
+    widows: 3; /* لمنع ترك سطر واحد من الفقرة في آخر الصفحة */
+    margin-bottom: 7pt !important;
+  }
+
+  /* --- 3. إخفاء العناصر التفاعلية وإظهار المحتوى المخفي --- */
+  .btn,
+  .mcq-options,
+  .mcq-feedback,
+  .worksheet-footer,
+  .btn-back {
+    display: none !important;
+  }
+
+  .solution-box.hidden,
+  .hidden.solution-box {
+    display: block !important;
+  }
+
+  /* --- 4. تنسيق الهيكل العام والعناوين --- */
+  .worksheet {
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  .worksheet-header {
+    color: var(--print-secondary-blue) !important;
+    border-bottom: 2px solid var(--print-primary-blue) !important;
+    padding: 0 0 8pt 0 !important;
+    margin-bottom: 20pt !important;
+    background: none !important;
+  }
+  .worksheet-header span {
+    font-size: 10pt;
+  }
+
+  header.text-center h1 {
+    font-family: "Cairo", sans-serif;
+    font-size: 22pt; /* عنوان رئيسي واضح وأنيق */
+    color: var(--print-primary-blue) !important;
+    margin-bottom: 5pt !important;
+  }
+
+  header.text-center p {
+    font-size: 13pt;
+    color: #555 !important;
+    margin-top: 0 !important;
+  }
+
+  .section-title {
+    font-family: "Cairo", sans-serif;
+    font-size: 17pt;
+    color: var(--print-secondary-blue) !important;
+    border-bottom: 3px solid var(--print-accent-blue) !important;
+    margin-top: 24pt !important; /* مسافة واضحة لبدء قسم جديد */
+    margin-bottom: 14pt !important;
+    padding-bottom: 4pt !important;
+    width: 100%; /* اجعل الخط يمتد بعرض الصفحة */
+    display: block;
+    /* هذا يضمن أن كل قسم رئيسي يبدأ في صفحة جديدة إذا أردت */
+    /* page-break-before: always; */
+  }
+
+  .question-group-title {
+    font-family: "Cairo", sans-serif;
+    font-size: 15pt;
+    color: var(--print-accent-blue) !important;
+    background-color: var(--print-bg-light-blue) !important;
+    border-right: 4px solid var(--print-accent-blue) !important;
+    margin-top: 16pt !important;
+    margin-bottom: 12pt !important;
+    padding: 7pt 12pt !important;
+    border-radius: 4px !important;
+  }
+
+  /* --- 5. تنسيق الصناديق والمحتويات الخاصة --- */
+  .rule-box {
+    background-color: var(--print-bg-light-yellow) !important;
+    border: 1px solid #fde68a !important;
+    border-right: 4px solid #f59e0b !important;
+    padding: 12pt !important;
+    margin: 12pt 0 !important;
+    border-radius: 4px !important;
+  }
+
+  .solution-box {
+    background-color: var(--print-bg-light-green) !important;
+    border: 1px dashed #6ee7b7 !important;
+    padding: 10pt 12pt !important;
+    margin-top: 8pt !important;
+    line-height: 1.7 !important;
+    border-radius: 4px !important;
+  }
+
+  .mcq-question,
+  .p-4.border.border-slate-200.rounded-lg {
+    background-color: #ffffff !important;
+    border: 1px solid var(--print-border-light) !important;
+    box-shadow: none !important;
+    padding: 12pt !important;
+    margin-top: 10pt !important;
+    border-radius: 4px !important;
+  }
+
+  .katex {
+    font-size: 1.25em !important; /* معادلات أكبر قليلاً لتكون واضحة */
+    font-family: "Amiri", serif !important;
+  }
+
+  /* --- 6. التحكم الذكي في فواصل الصفحات (أهم جزء) --- */
+
+  /* (أ) امنع الفواصل بعد العناوين مباشرة */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .section-title,
+  .question-group-title {
+    page-break-after: avoid !important;
+  }
+
+  /* (ب) امنع الفواصل داخل العناصر الصغيرة والمتوسطة */
+  .rule-box,
+  .solution-box,
+  .mcq-question,
+  .p-4.border.rounded-lg,
+  ul,
+  ol,
+  blockquote {
+    page-break-inside: avoid !important;
+  }
+
+  /* (ج) اسمح بالفاصل داخل العناصر الكبيرة جداً مثل أقسام <section> */
+  section,
+  .card {
+    page-break-inside: auto !important; /* هذا هو الوضع الافتراضي، نؤكده هنا */
+  }}
+/* CSS لجعل اتجاه الجذر من اليمين لليسار */
+.rsqrt-outer {
+  display: inline-block; /* ضروري لتطبيق التحويل بشكل صحيح */
+  transform: scaleX(-1); /* يقوم بقلب العنصر الخارجي (الجذر ومحتواه) أفقيًا */
+  text-align: left;      /* يضمن أن المحتوى الداخلي يبدأ من اليسار بعد القلب */
+}
+
+.rsqrt-inner {
+  display: inline-block; /* ضروري لتطبيق التحويل */
+  transform: scaleX(-1); /* يقوم بقلب المحتوى الداخلي مرة أخرى ليعود إلى اتجاهه الصحيح */
+  direction: rtl;        /* يضمن أن الأرقام والنصوص داخل الجذر تظل من اليمين لليسار */
+  text-align: right;     /* يضبط محاذاة النص داخل الجذر لليمين */
+}
+/* --- تصميم زر العودة: أنيق وواضح --- */
+.btn-back {
+  /* 1. إعدادات أساسية */
+  display: inline-flex; /* استخدام فليكس بوكس للمحاذاة المثالية */
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* مسافة بين النص والأيقونة */
+  direction: rtl; /* لضمان الترتيب الصحيح (نص ثم أيقونة) */
+  
+  /* 2. التصميم البصري */
+  background-color: transparent; /* خلفية شفافة */
+  color: var(--accent-blue); /* لون النص من متغيراتك */
+  border: 2px solid var(--accent-blue); /* حدود بنفس لون النص */
+  padding: 8px 20px;
+  border-radius: 50px; /* شكل الحبة الدائرية */
+  font-weight: 700;
+  cursor: pointer;
+  
+  /* 3. تأثيرات انتقالية */
+  transition: all 0.3s ease;
+}
+
+.btn-back svg {
+  width: 1.2em;
+  height: 1.2em;
+  transition: transform 0.3s ease; /* تأثير حركة للأيقونة */
+}
+
+/* 4. تأثيرات عند التمرير (Hover) */
+.btn-back:hover {
+  background-color: var(--accent-blue); /* تمتلئ الخلفية باللون */
+  color: white; /* يصبح لون النص أبيض */
+  transform: translateY(-2px); /* يرتفع الزر قليلاً */
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.25);
+}
+
+.btn-back:hover svg {
+  transform: translateX(4px); /* تتحرك الأيقونة لليمين قليلاً */
+}
