@@ -554,19 +554,7 @@ header.text-center p {
   section,
   .card {
     page-break-inside: auto !important; /* هذا هو الوضع الافتراضي، نؤكده هنا */
-  }}
-/* CSS لجعل اتجاه الجذر من اليمين لليسار */
-.rsqrt-outer {
-  display: inline-block; /* ضروري لتطبيق التحويل بشكل صحيح */
-  transform: scaleX(-1); /* يقوم بقلب العنصر الخارجي (الجذر ومحتواه) أفقيًا */
-  text-align: left;      /* يضمن أن المحتوى الداخلي يبدأ من اليسار بعد القلب */
-}
-
-.rsqrt-inner {
-  display: inline-block; /* ضروري لتطبيق التحويل */
-  transform: scaleX(-1); /* يقوم بقلب المحتوى الداخلي مرة أخرى ليعود إلى اتجاهه الصحيح */
-  direction: rtl;        /* يضمن أن الأرقام والنصوص داخل الجذر تظل من اليمين لليسار */
-  text-align: right;     /* يضبط محاذاة النص داخل الجذر لليمين */
+  }
 }
 /* --- تصميم زر العودة: أنيق وواضح --- */
 .btn-back {
@@ -576,7 +564,7 @@ header.text-center p {
   justify-content: center;
   gap: 0.5rem; /* مسافة بين النص والأيقونة */
   direction: rtl; /* لضمان الترتيب الصحيح (نص ثم أيقونة) */
-  
+
   /* 2. التصميم البصري */
   background-color: transparent; /* خلفية شفافة */
   color: var(--accent-blue); /* لون النص من متغيراتك */
@@ -585,7 +573,7 @@ header.text-center p {
   border-radius: 50px; /* شكل الحبة الدائرية */
   font-weight: 700;
   cursor: pointer;
-  
+
   /* 3. تأثيرات انتقالية */
   transition: all 0.3s ease;
 }
@@ -606,4 +594,36 @@ header.text-center p {
 
 .btn-back:hover svg {
   transform: translateX(4px); /* تتحرك الأيقونة لليمين قليلاً */
+}
+/* CSS لجعل اتجاه الجذر من اليمين لليسار */
+.rsqrt-outer {
+  display: inline-block; /* ضروري لتطبيق التحويل بشكل صحيح */
+  transform: scaleX(-1); /* يقوم بقلب العنصر الخارجي (الجذر ومحتواه) أفقيًا */
+  text-align: left; /* يضمن أن المحتوى الداخلي يبدأ من اليسار بعد القلب */
+}
+
+.rsqrt-inner {
+  display: inline-block; /* ضروري لتطبيق التحويل */
+  transform: scaleX(
+    -1
+  ); /* يقوم بقلب المحتوى الداخلي مرة أخرى ليعود إلى اتجاهه الصحيح */
+  direction: rtl; /* يضمن أن الأرقام والنصوص داخل الجذر تظل من اليمين لليسار */
+  text-align: right; /* يضبط محاذاة النص داخل الجذر لليمين */
+}
+
+/* CSS for responsive video */
+.video-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  margin-bottom: 2rem;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

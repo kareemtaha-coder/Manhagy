@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>شرح درس: حل معادلة من الدرجة الثانية في متغير واحد</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      onload="renderMathInElement(document.body, { delimiters: [{left: '$', right: '$', display: false}] });"
+    ></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Amiri:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="worksheet">
+      <div class="worksheet-header">
+        <div><span>أ / كريم طه</span></div>
+        <div><span>للتواصل: ٠١١١٢٣٣٨٩٠١</span></div>
+      </div>
+      <header class="text-center mb-10">
+        <h1
+          class="text-4xl font-bold text-sky-800"
+          style="font-family: 'Amiri', serif"
+        >
+          حل معادلة من الدرجة الثانية في متغير واحد
+        </h1>
+        <p class="text-lg text-slate-600 mt-2">الجبر - الصف الأول الثانوي</p>
+      </header>
+
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/jlAFwVmL-dY"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <main class="space-y-8">
+        <section class="card">
+          <h2 class="section-title">مقدمة: الصورة العامة للمعادلة التربيعية</h2>
+          <p>
+            في هذا الدرس، سنتناول بالدراسة والتحليل المعادلات من الدرجة الثانية
+            في مجهول واحد، والتي تُعرف أيضاً بالمعادلات التربيعية. لقد درسنا
+            سابقاً كيفية حلها جبرياً بالتحليل، وسنضيف هذا العام طرقاً أخرى للحل
+            الجبري والبياني، بالإضافة إلى دراسة طبيعة جذري المعادلة والعلاقة
+            بينهما وبين معاملات حدودها.
+          </p>
+
+          <div class="rule-box mt-4">
+            <h3 class="font-bold text-lg mb-2">
+              الصورة العامة للمعادلة التربيعية
+            </h3>
+            <p class="text-center text-xl font-bold">$أ س^٢ + ب \,س + ج = ٠$</p>
+            <p>حيث أن $أ, ب, ج \in ح$، وشرطه الأساسي أن أ لا تساوي صفر.</p>
+            <ul class="list-disc pr-6 mt-2">
+              <li>$أ$: معامل $س^٢$ (المعامل الرئيسي)</li>
+              <li>$ب$: معامل $س$ (الحد الأوسط)</li>
+              <li>$ج$: الحد المطلق (الحد الثابت)</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="section-title">أولاً: طرق حل المعادلة التربيعية</h2>
+
+          <h3 class="question-group-title">(أ) الحل الجبري بالتحليل</h3>
+          <p>
+            تعتمد هذه الطريقة على تحليل المقدار الثلاثي إلى حاصل ضرب عاملين، ثم
+            استخدام خاصية حاصل الضرب الصفري: إذا كان $ك \times م = ٠$، فإن $ك =
+            ٠$ أو $م = ٠$.
+          </p>
+
+          <div
+            class="p-6 bg-white rounded-xl shadow-sm border border-slate-200 mt-4"
+          >
+            <p class="text-lg font-bold">
+              مثال ١: أوجد مجموعة حل المعادلة $س^٢ - ٥س + ٦ = ٠$ في $ح$.
+            </p>
+            <button class="btn mt-4" onclick="toggleAnswer('sol-l2-q1')">
+              إظهار الحل
+            </button>
+            <div id="sol-l2-q1" class="hidden solution-box mt-3">
+              <p>
+                $\because$ لتحليل المقدار، نبحث عن عددين حاصل ضربهما $٦$
+                ومجموعهما $-٥$. العددان هما ($-٢$) و ($-٣$).
+              </p>
+              <p>$\therefore (س - ٢)(س - ٣) = ٠$</p>
+              <p>باستخدام خاصية الضرب الصفري:</p>
+              <ul class="list-decimal pr-6">
+                <li>إما $س - ٢ = ٠ \implies س = ٢$</li>
+                <li>أو $س - ٣ = ٠ \implies س = ٣$</li>
+              </ul>
+              <p class="font-bold mt-2">$\therefore$ م.ح = $\{٢ ، ٣\}$</p>
+            </div>
+          </div>
+
+          <h3 class="question-group-title mt-6">
+            (ب) الحل باستخدام القانون العام
+          </h3>
+          <p>
+            عندما يصعب تحليل المقدار الثلاثي، نستخدم القانون العام لإيجاد جذري
+            المعادلة.
+          </p>
+          <div class="rule-box-alt my-4 text-center">
+            <p class="font-bold text-xl">
+              $س = \frac{-ب \pm \rsqrt{ب^٢ - ٤أ\,ج}}{٢أ}$
+            </p>
+          </div>
+
+          <div
+            class="p-6 bg-white rounded-xl shadow-sm border border-slate-200 mt-4"
+          >
+            <p class="text-lg font-bold">
+              مثال ٢: أوجد مجموعة حل المعادلة $٢س^٢ + ٥س - ٤ = ٠$ مقربًا الناتج
+              لرقمين عشريين.
+            </p>
+            <button class="btn mt-4" onclick="toggleAnswer('sol-l2-q2')">
+              إظهار الحل
+            </button>
+            <div id="sol-l2-q2" class="hidden solution-box mt-3">
+              <p>$\because$ تحديد المعاملات: $أ = ٢$، $ب = ٥$، $ج = -٤$.</p>
+              <p>$\therefore$ بالتعويض في القانون العام:</p>
+              <p>$س = \frac{-(٥) \pm \rsqrt{(٥)^٢ - ٤(٢)(-٤)}}{٢(٢)}$</p>
+              <p>
+                $س = \frac{-٥ \pm \rsqrt{٢٥ + ٣٢}}{٤} = \frac{-٥ \pm
+                \rsqrt{٥٧}}{٤}$
+              </p>
+              <p>إذن، الجذران هما:</p>
+              <ul class="list-decimal pr-6">
+                <li>$س = \frac{-٥ + \rsqrt{٥٧}}{٤} \approx ٠.٦٤$</li>
+                <li>$س = \frac{-٥ - \rsqrt{٥٧}}{٤} \approx -٣.١٤$</li>
+              </ul>
+              <p class="font-bold mt-2">
+                $\therefore$ م.ح = $\{٠.٦٤ ، -٣.١٤\}$
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="section-title">
+            ثانياً: تحديد نوع جذري المعادلة (المميز)
+          </h2>
+          <p>
+            يمكن تحديد نوع جذري المعادلة التربيعية دون حلها الفعلي عن طريق حساب
+            قيمة المقدار الذي تحت الجذر في القانون العام، والذي يطلق عليه
+            <strong>المميز</strong>.
+          </p>
+          <div class="rule-box my-4 text-center">
+            <p class="font-bold text-xl text-slate-800">
+              المميز = $ب^٢ - ٤أ\,ج$
+            </p>
+          </div>
+          <ul class="list-decimal pr-5 space-y-2">
+            <li>إذا كان المميز > $٠$ (موجب): يوجد جذران حقيقيان مختلفان.</li>
+            <li>إذا كان المميز = $٠$ (صفر): يوجد جذران حقيقيان متساويان.</li>
+            <li>
+              إذا كان المميز < $٠$ (سالب): يوجد جذران مركبان وغير حقيقيين.
+            </li>
+          </ul>
+
+          <div
+            class="p-6 bg-white rounded-xl shadow-sm border border-slate-200 mt-4"
+          >
+            <p class="text-lg font-bold">
+              مثال ٣: حدد نوع جذري المعادلة $٩س^٢ - ٦س + ١ = ٠$.
+            </p>
+            <button class="btn mt-4" onclick="toggleAnswer('sol-l2-q3')">
+              إظهار الحل
+            </button>
+            <div id="sol-l2-q3" class="hidden solution-box mt-3">
+              <p>$\because$ $أ=٩$, $ب=-٦$, $ج=١$</p>
+              <p>$\therefore$ المميز = $(-٦)^٢ - ٤(٩)(١) = ٣٦ - ٣٦ = ٠$</p>
+              <p class="font-bold mt-2">
+                بما أن المميز = $٠$، إذن الجذران حقيقيان متساويان.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="section-title">
+            ثالثاً: العلاقة بين جذري المعادلة ومعاملاتها
+          </h2>
+          <p>
+            إذا كان $ل$، $م$ هما جذرا المعادلة التربيعية $أ س^٢ + ب س + ج = ٠$،
+            فإن:
+          </p>
+          <div class="rule-box-alt my-4">
+            <p>مجموع الجذرين: $ل + م = \frac{-ب}{أ}$</p>
+            <p>حاصل ضرب الجذرين: $ل \times م = \frac{ج}{أ}$</p>
+          </div>
+
+          <div
+            class="p-6 bg-white rounded-xl shadow-sm border border-slate-200 mt-4"
+          >
+            <p class="text-lg font-bold">
+              مثال ٤: بدون حل المعادلة $٢س^٢ + ٧س - ٤ = ٠$، أوجد مجموع وحاصل ضرب
+              جذريها.
+            </p>
+            <button class="btn mt-4" onclick="toggleAnswer('sol-l2-q4')">
+              إظهار الحل
+            </button>
+            <div id="sol-l2-q4" class="hidden solution-box mt-3">
+              <p>$\because$ $أ = ٢$، $ب = ٧$، $ج = -٤$</p>
+              <p>$\therefore$ مجموع الجذرين = $\frac{-ب}{أ} = \frac{-٧}{٢}$</p>
+              <p>
+                $\therefore$ حاصل ضرب الجذرين = $\frac{ج}{أ} = \frac{-٤}{٢} =
+                -٢$
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="section-title">
+            رابعاً: تكوين المعادلة التربيعية بمعلومية جذريها
+          </h2>
+          <p>
+            إذا علمنا جذري المعادلة (ليكن $ل$، $م$)، يمكننا تكوين المعادلة
+            الأصلية باستخدام الصيغة التالية:
+          </p>
+          <div class="rule-box my-4 text-center">
+            <p class="font-bold text-xl text-slate-800">
+              $س^٢ - (\text{مجموع الجذرين}) س + (\text{حاصل ضرب الجذرين}) = ٠$
+            </p>
+          </div>
+
+          <div
+            class="p-6 bg-white rounded-xl shadow-sm border border-slate-200 mt-4"
+          >
+            <p class="text-lg font-bold">
+              مثال ٥: كوّن المعادلة التربيعية التي جذراها $٣$ و $-٥$.
+            </p>
+            <button class="btn mt-4" onclick="toggleAnswer('sol-l2-q5')">
+              إظهار الحل
+            </button>
+            <div id="sol-l2-q5" class="hidden solution-box mt-3">
+              <p>$\because$ مجموع الجذرين = $٣ + (-٥) = -٢$</p>
+              <p>$\because$ حاصل ضرب الجذرين = $٣ \times (-٥) = -١٥$</p>
+              <p>$\therefore$ المعادلة هي: $س^٢ - (-٢)س + (-١٥) = ٠$</p>
+              <p class="font-bold mt-2">
+                أي أن المعادلة هي: $س^٢ + ٢س - ١٥ = ٠$
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="worksheet-header">
+            <div><span>أ / كريم طه</span></div>
+            <div><span>للتواصل: ٠١١١٢٣٣٨٩٠١</span></div>
+          </div>
+
+          <h2 class="section-title">تمارين ومسائل للمراجعة</h2>
+
+          <h3 class="question-group-title">اختر الإجابة الصحيحة:</h3>
+          <div class="space-y-6">
+            <div class="mcq-question" id="mcq-l2-q1">
+              <p class="text-lg font-semibold">
+                ١. في المعادلة $٣س^٢ - ٥س + ٢ = ٠$، مجموع الجذرين يساوي:
+              </p>
+              <div
+                class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4"
+              >
+                <button
+                  class="mcq-option"
+                  onclick="checkAnswer(this, 'mcq-l2-q1')"
+                >
+                  $\frac{-٥}{٣}$
+                </button>
+                <button
+                  class="mcq-option"
+                  onclick="checkAnswer(this, 'mcq-l2-q1')"
+                  data-correct="true"
+                >
+                  $\frac{٥}{٣}$
+                </button>
+                <button
+                  class="mcq-option"
+                  onclick="checkAnswer(this, 'mcq-l2-q1')"
+                >
+                  $\frac{٢}{٣}$
+                </button>
+                <button
+                  class="mcq-option"
+                  onclick="checkAnswer(this, 'mcq-l2-q1')"
+                >
+                  $\frac{-٢}{٣}$
+                </button>
+              </div>
+              <div id="feedback-mcq-l2-q1" class="mcq-feedback mt-3"></div>
+            </div>
+
+            <div class="mcq-question" id="mcq-l2-q2">
+              <p class="text-lg font-semibold">
+                ٢. مميز المعادلة $س^٢ - ٤س + ٥ = ٠$ هو:
+              </p>
+              <div
+                class="mcq-options grid grid-cols-2 md:grid-cols-4 gap-4 mt-4"
+              >
+                <button
+                  class="mcq-option"
+                  onclick="checkAnswer(this, 'mcq-l2-q2')"
+                >
+                  $٣٦$
+                </button>
+                <button
+                  class="mcq-option"
+                  onclick="checkAnswer(this, 'mcq-l2-q2')"
+                >
+                  $٤$
+                </button>
+                <button
+                  class="mcq-option"
+                  onclick="checkAnswer(this, 'mcq-l2-q2')"
+                  data-correct="true"
+                >
+                  $-٤$
+                </button>
+                <button
+                  class="mcq-option"
+                  onclick="checkAnswer(this, 'mcq-l2-q2')"
+                >
+                  $٠$
+                </button>
+              </div>
+              <div id="feedback-mcq-l2-q2" class="mcq-feedback mt-3"></div>
+            </div>
+          </div>
+
+          <h3 class="question-group-title mt-8">مسائل مهارات عليا:</h3>
+          <div
+            class="p-6 bg-white rounded-xl shadow-sm border border-slate-200 mt-4"
+          >
+            <p class="text-lg font-bold">
+              مسألة: أوجد قيمة $ك$ التي تجعل أحد جذري المعادلة $س^٢ - (ك-٢)س + ٣
+              = ٠$ هو المعكوس الجمعي للجذر الآخر.
+            </p>
+            <button class="btn mt-4" onclick="toggleAnswer('sol-l2-q6')">
+              إظهار الحل
+            </button>
+            <div id="sol-l2-q6" class="hidden solution-box mt-3">
+              <p>
+                $\because$ شرط أن يكون أحد الجذرين معكوساً جمعياً للآخر هو أن
+                يكون مجموعهما يساوي صفر.
+              </p>
+              <p>
+                $\because$ من المعادلة، مجموع الجذرين = $\frac{-(-(ك-٢))}{١} =
+                ك-٢$
+              </p>
+              <p>$\therefore$ نضع $ك-٢ = ٠$</p>
+              <p class="font-bold mt-2">$\therefore ك = ٢$</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="worksheet-footer">
+        <span>تمنياتنا لكم بالنجاح والتوفيق</span>
+        <span>أ / كريم طه - ٠١١١٢٣٣٨٩٠١</span>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
